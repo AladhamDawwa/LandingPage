@@ -1,32 +1,32 @@
 const sections = document.getElementsByTagName("section");
 
-/*  build the nav */
-let docFrag = document.createDocumentFragment();
+/* Self-invoking function to build the nav */
+(() => {
+  let docFrag = document.createDocumentFragment();
+  for (let i = 0; i < sections.length; i++) {
+    let listItem = document.createElement("li");
+    let anchorItem = document.createElement("a");
+    anchorItem.textContent = `section ${i + 1}`;
+    anchorItem.classList.add("menu__link");
+    listItem.appendChild(anchorItem);
+    docFrag.appendChild(listItem);
+  }
 
-for (let i = 0; i < sections.length; i++) {
-  let listItem = document.createElement("li");
-  let anchorItem = document.createElement("a");
-  anchorItem.textContent = `section ${i + 1}`;
-  anchorItem.classList.add("menu__link");
-  anchorItem.href = `#section${i + 1}`;
-  listItem.appendChild(anchorItem);
-  docFrag.appendChild(listItem);
-}
+  let navList = document.getElementById("navbar__list");
+  navList.appendChild(docFrag);
+})();
 
-let navList = document.getElementById("navbar__list");
-navList.appendChild(docFrag);
+const links = document.getElementsByTagName("li");
 
 /* Scroll to section on link click  */
-links = document.getElementsByTagName("li");
-
 for (let i = 0; i < sections.length; i++) {
   links[i].addEventListener("click", smoothScroll);
 }
 
 function smoothScroll(e) {
   e.preventDefault();
-  let id = e.target.getAttribute("href").substring(1);
-  let section = document.getElementById(id);
+  let id = e.target.textContent.substr(-1);
+  let section = document.getElementById(`section${id}`);
   let position = section.offsetTop;
   window.scrollTo({
     top: position,
@@ -50,8 +50,10 @@ window.addEventListener("scroll", () => {
     //  Top = [-300,300]
     if (Math.abs(position) < 300) {
       sections[i].classList.add("active");
+      links[i].firstChild.classList.add("active");
     } else {
       sections[i].classList.remove("active");
+      links[i].firstChild.classList.remove("active");
     }
   }
 });
