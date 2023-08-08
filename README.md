@@ -6,5 +6,5 @@
 This is a landing page built using HTML, CSS & JS.
 ## :warning: Prerequisites
 No libarires or frameworks neeeded to run the project.
-## :gear: Installation
+## :gear: Local run
 Just clone the project and open (index.html) file or just run the demo.
