@@ -1,7 +1,7 @@
 # Landing Page
 **This project is a part of udacity-egfwd professional frontend nanodegree.**
 ## :satellite: Demo-Preview 
-**[click to go to the website](https://aladhamdawwa.github.io/Landing-Page/)**
+**[click to go to the website](https://aladhamdawwa.github.io/LandingPage/)**
 ## :memo: Description
 This is a landing page built using HTML, CSS & JS.
 ## :warning: Prerequisites
